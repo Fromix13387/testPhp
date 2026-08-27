@@ -22,6 +22,7 @@ class CategoryController
         );
 
         if(!$data) {
+            http_response_code(404);
             return $this->view->render('pages/not-found');
         }
 

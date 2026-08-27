@@ -12,11 +12,12 @@ class ArticleController
         private View $view
     ) {}
 
-    public function get(Request $request, int $id)
+    public function get(Request $request, int $id): string
     {
         $data = $this->articleService->get($id, 3);
 
         if(!$data) {
+            http_response_code(404);
             return $this->view->render('pages/not-found');
         }
 
