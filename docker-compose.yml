@@ -1,14 +1,14 @@
 services:
   mysql:
     image: mysql:8.0
-    restart: on-failure
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: app
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "${MYSQL_USER}", "-p${MYSQL_PASSWORD}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "user", "-ppass"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -26,6 +26,30 @@ services:
       PMA_PASSWORD: root
     ports:
       - "8888:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - kivi
+
+  kivi:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DB_HOST: mysql
+      DB_NAME: app
+      DB_USER: user
+      DB_PASSWORD: pass
     depends_on:
       mysql:
         condition: service_healthy

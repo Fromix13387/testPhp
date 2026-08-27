@@ -12,6 +12,12 @@ class SeederRunner
     public function __construct(private Database $db) {}
 
     public function run(): void {
+        $this->clearTables([
+           'article_category',
+           'articles',
+           'categories',
+        ]);
+
         $this->call([
             ArticleSeeder::class,
             CategorySeeder::class,
@@ -27,5 +33,13 @@ class SeederRunner
             $seeder->run($this->db);
             echo "Выполнен: {$class}\n";
         }
+    }
+
+    private function clearTables(array $tables): void {
+        $this->db->execute('SET FOREIGN_KEY_CHECKS=0');
+        foreach ($tables as $table) {
+            $this->db->execute("TRUNCATE TABLE {$table}");
+        }
+        $this->db->execute('SET FOREIGN_KEY_CHECKS=1');
     }
 }
