@@ -2,31 +2,38 @@
 
 namespace app\core;
 
-use app\controllers\TestController;
-
 class Application
 {
     private array $config;
-
-//    private Database $db;
     private Container $container;
+    private Router $router;
     private Request $request;
     private Response $response;
 
     public function __construct(array $config)
     {
         $this->config = $config;
+        $this->request = new Request();
+        $this->router = new Router();
+        $this->container = new Container($this->config['components']);
+        $this->response = new Response();
+        $this->registerRoutes();
+
+    }
+
+    private function registerRoutes(): void
+    {
+        $apiRoutes = require __DIR__ . '/../routes/api.php';
+
+        $apiRoutes($this->router);
     }
 
     public function run()
     {
-        $this->request = new Request();
-        $this->container = new Container($this->config['components']);
+        $route = $this->router->resolve($this->request);
 
+        $result = $route->run($this->container, $this->request);
 
-//        $this->container->make(TestController::class);
-
-        $this->response = new Response();
-
+        $this->response->send($result);
     }
 }
