@@ -17,7 +17,7 @@ return new class {
                 image VARCHAR(255) NULL,
                 name VARCHAR(255) NOT NULL,
                 description TEXT NULL,
-                text LONGTEXT NOT NULL,
+                text LONGTEXT NULL,
                 views BIGINT UNSIGNED NOT NULL DEFAULT 0
             )
         ');
