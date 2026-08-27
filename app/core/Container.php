@@ -11,7 +11,13 @@ class Container
     private array $resolved = [];
     public function __construct(array $config)
     {
-        $this->bindings = $config;
+        foreach ($config as $name => $binding) {
+            $this->bindings[$name] = $binding;
+
+            if (is_array($binding) && isset($binding['class'])) {
+                $this->bindings[$binding['class']] = $binding;
+            }
+        }
     }
 
     public function get(string $name) {

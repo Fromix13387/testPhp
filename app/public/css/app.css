@@ -1,0 +1,251 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+  background: #ffffff;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main {
+  flex: 1;
+  padding: 40px 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.home {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+.home .category-section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.home .category-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home .category-section__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.home .category-section__all {
+  font-size: 14px;
+  text-decoration: underline;
+}
+.home .article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.category-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px 0;
+  justify-content: center;
+  align-items: center;
+}
+.category-page > * {
+  width: 70%;
+}
+.category-page__info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.category-page__title {
+  padding: 0;
+}
+.category-page__description {
+  color: #666;
+}
+.category-page__controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.category-page__sort {
+  text-decoration: underline;
+}
+.category-page__articles {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.category-page .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 0;
+}
+.category-page .pagination a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+.category-page .pagination__active {
+  font-weight: 700;
+  background: #f3f3f3;
+}
+
+.article-page {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding: 40px 0;
+  justify-content: center;
+  align-items: center;
+}
+.article-page > * {
+  width: 70%;
+}
+.article-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.article-page__title {
+  font-size: 40px;
+  line-height: 1.2;
+}
+.article-page__meta {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #888;
+}
+.article-page__image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.article-page__description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+}
+.article-page__text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  line-height: 1.8;
+}
+
+.similar-articles {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.similar-articles__title {
+  font-size: 26px;
+}
+.similar-articles__list {
+  display: flex;
+  gap: 24px;
+}
+.similar-articles__list .article-card {
+  flex: 1;
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.article-card__image {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.article-card__meta p {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
+.article-card__title {
+  font-size: 18px;
+  font-weight: 500;
+}
+.article-card__description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+}
+.article-card__read-more {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.site-header {
+  border-bottom: 1px solid #e5e7eb;
+  background: #85b9ee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.site-header__inner {
+  width: 70%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.site-header__logo {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.site-footer {
+  margin-top: auto;
+  background: #85b9ee;
+}
+.site-footer__inner {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=app.css.map */

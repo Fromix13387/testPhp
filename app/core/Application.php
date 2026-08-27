@@ -23,9 +23,8 @@ class Application
 
     private function registerRoutes(): void
     {
-        $apiRoutes = require __DIR__ . '/../routes/api.php';
-
-        $apiRoutes($this->router);
+        $webRoutes = require __DIR__ . '/../routes/web.php';
+        $webRoutes($this->router);
     }
 
     public function run()

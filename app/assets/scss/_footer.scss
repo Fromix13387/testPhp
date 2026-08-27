@@ -1,0 +1,11 @@
+.site-footer {
+  margin-top: auto;
+  background: $secondary-color;
+
+  &__inner {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

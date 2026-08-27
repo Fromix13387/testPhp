@@ -8,6 +8,7 @@ class Router
 {
 
     private array $routes = [];
+    private mixed $defaultHandler = null;
 
     public function __construct()
     {
@@ -32,6 +33,11 @@ class Router
             }
         }
 
+        if ($this->defaultHandler !== null) {
+            return new Route($request->method(), $request->path(), $this->defaultHandler);
+        }
+
+
         throw new RuntimeException('Путь не найден');
     }
     public function get($path, array|callable $handler): void
@@ -54,4 +60,10 @@ class Router
     {
         $this->addRoute(new Route('DELETE', $path, $handler));
     }
+
+    public function default(array|callable $handler): void
+    {
+        $this->defaultHandler = $handler;
+    }
+
 }

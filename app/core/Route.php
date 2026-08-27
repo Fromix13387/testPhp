@@ -7,7 +7,7 @@ use RuntimeException;
 class Route
 {
     public string $method;
-    public array $params;
+    public array $params = [];
     public string $path;
     public mixed $handler;
 

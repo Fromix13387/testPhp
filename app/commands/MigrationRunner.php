@@ -55,6 +55,6 @@ class MigrationRunner
 
     public function getApplied(): array
     {
-        return $this->db->fetchAll("SELECT migration FROM migrations ORDER BY created_at");
+        return array_column($this->db->fetchAll('SELECT migration FROM migrations ORDER BY created_at'), 'migration');
     }
 }

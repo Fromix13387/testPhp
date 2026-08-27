@@ -16,7 +16,7 @@ class ArticleSeeder implements SeederInterface
                 'INSERT INTO articles (image, name, description, text, views)
          VALUES (:image, :name, :description, :text, :views)',
                 [
-                    'image' => $faker->imageUrl(800, 600, 'animals'),
+                    'image' => 'https://picsum.photos/800/600?random=' . $faker->unique()->numberBetween(1, 10000),
                     'name' => $faker->sentence(3),
                     'description' => $faker->paragraph(),
                     'text' => $faker->text(),

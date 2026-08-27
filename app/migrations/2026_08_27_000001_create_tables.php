@@ -7,7 +7,8 @@ return new class {
             CREATE TABLE categories (
                 id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
-                description TEXT NULL
+                description TEXT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ');
 
@@ -18,7 +19,8 @@ return new class {
                 name VARCHAR(255) NOT NULL,
                 description TEXT NULL,
                 text LONGTEXT NULL,
-                views BIGINT UNSIGNED NOT NULL DEFAULT 0
+                views BIGINT UNSIGNED NOT NULL DEFAULT 0,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ');
 
